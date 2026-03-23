@@ -1,0 +1,7 @@
+interface:
+  display_name: 'Cover Song Generator'
+  short_description: 'Generate a cover song using AI_covers model'
+  default_prompt: 'Use the cover song service at http://localhost:8000/cover to generate a cover. POST with multipart/form-data: file (audio), target_speaker (string). Returns audio file.'
+
+policy:
+  allow_implicit_invocation: false

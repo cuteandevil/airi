@@ -250,6 +250,16 @@ Capable of
     - [x] Auto look at
     - [x] Idle eye movement
 
+## Cover Song Module
+
+AIRI now includes a cover song generation module powered by [AI_covers](https://github.com/cuteandevil/AI_covers). Users can upload an audio file and specify a target voice to generate a high‑quality singing cover. The module is exposed as an xsAI skill (`cover_song`) and runs as a local FastAPI service (`cover-song-service`). 
+
+- **How to use**: In chat, upload a song and say “请把这首歌翻唱成<声纹名称>” or use the xsAI tool `cover_song` with parameters `file` (audio) and `target_speaker` (string).  
+- **Service endpoint**: `POST http://localhost:8000/cover` (multipart/form‑data: `file`, `target_speaker`).  
+- **Dependencies**: The service bundles the AI_covers code and runs in an isolated Python environment to avoid conflicts with AIRI’s own dependencies.  
+- **Performance**: GPU acceleration is used when available; falls back to CPU otherwise.
+
+
 ## Development
 
 > For detailed instructions to develop this project, follow [CONTRIBUTING.md](./.github/CONTRIBUTING.md)
