@@ -191,14 +191,12 @@ jobs:
           exit 1
 
       - name: Wrangler Upload
-        if: ${{ steps.build.outcome == 'success' }}
+        if: ${{ steps.build.outcome == "success" }}
         id: wrangler-versions-upload
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: versions upload -c ${{ matrix.wrangler_config_path }} --preview-alias pr-${{ steps.meta.outputs.PR_NUM }} --message "GitHub Actions uploaded preview for Pull Request ${{ steps.meta.outputs.PR_NUM }}" --tag v0.0.1-pr.${{ steps.meta.outputs.PR_NUM }}
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          RESULT=$(wrangler versions upload -c ${{ matrix.wrangler_config_path }} --preview-alias pr-${{ steps.meta.outputs.PR_NUM }} --message "GitHub Actions uploaded preview for Pull Request ${{ steps.meta.outputs.PR_NUM }}" --tag v0.0.1-pr.${{ steps.meta.outputs.PR_NUM }})
+          UPLOAD_URL=$(echo "$RESULT" | tail -1)
+          echo "deployment-url=$UPLOAD_URL" >> $GITHUB_OUTPUT
 
       - name: Prepare preview URLs
         if: ${{ steps.build.outcome == 'success' }}
