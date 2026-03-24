@@ -193,6 +193,9 @@ jobs:
       - name: Wrangler Upload
         if: ${{ steps.build.outcome == "success" }}
         id: wrangler-versions-upload
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           RESULT=$(wrangler versions upload -c ${{ matrix.wrangler_config_path }} --preview-alias pr-${{ steps.meta.outputs.PR_NUM }} --message "GitHub Actions uploaded preview for Pull Request ${{ steps.meta.outputs.PR_NUM }}" --tag v0.0.1-pr.${{ steps.meta.outputs.PR_NUM }})
           UPLOAD_URL=$(echo "$RESULT" | tail -1)
