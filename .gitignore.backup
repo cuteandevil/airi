@@ -14,17 +14,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# IDEs and editors
 .idea
-.vscode/
-!.vscodeignore
 .temp
 **/temp/
 .claude/worktrees/
 
-# Environment variables
-.env
-.env.*
 # Anything .local, especially for .env.local
 *.local
 # e.g. Claude Code settings.local.json
@@ -46,7 +40,6 @@ cert*/
 
 # Test coverage
 coverage/
-.nyc_output
 
 # Build
 out/
@@ -64,40 +57,20 @@ dist
 # vite-plugin-inspect
 .vite-inspect
 
-# SvelteKit
-.svelte-kit
-.package
-
-# Auto import & auto fs based router
+# auto import & auto fs based router
 components.d.ts
 **/typed-router.d.ts
 
 # Cache
 .eslintcache
-.vetur-cache
-.cache
+**/.cache/
 **/.vitepress/cache/
 **/tsconfig.tsbuildinfo
-.pytest_cache/
-.ruff_cache/
-.mypy_cache/
-.coverage
-htmlcov/
-.node_repl_history
-.yarn-cache
-.npm
-.turbo/preload*
-.SageMaker
-
-# Virtual environments
-**/*venv*/
-**/*env*/
 
 # Netlify
 **/.netlify/*
 **/.netlify/functions-serve/*
 
-# Specific paths
 **/public/assets/js/*
 **/assets/live2d/models/*
 **/assets/vrm/models/*
@@ -148,7 +121,6 @@ plugins/development
 plugins-local
 plugins-development
 
-# Specific
 apps/stage-pocket/ios/buildServer.json
 .ghfs/
 
@@ -156,46 +128,3 @@ apps/stage-pocket/ios/buildServer.json
 __pycache__/
 *.py[cod]
 *$py.class
-
-# OS
-Thumbs.db
-._*
-.DS_Store
-.ea
-.Directory
-.Trashes
-.tmp
-.temp
-Cache
-Thumbs.db:encryptable
- ehthumbs_vista.db
-[Dd]esktop.ini
-$Recycle.Bin
-*.tmp
-*.temp
-*.log
-*.git
-*.svn
-
-# Misc
-.DS_Store
-.env
-.idea
-*.seed
-*.log
-*.dat
-*.hub
-*.sublime-workspace
-*.sublime-project
-.sass-cache
-.serverauth.*
-*.orig
-*.bak
-*.crash
-*.crash.*
-*.mpkg
-*.application
-*.gateway
-*.webroot
-*.cert
-*.revoke
